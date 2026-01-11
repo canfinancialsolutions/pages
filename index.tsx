@@ -1,4 +1,22 @@
 <img src="/logo.png" alt="CAN Financial Solutions" className="h-12 w-auto" />
+
+import { supabase } from '../lib/supabaseClient';
+
+export default function Home() {
+  async function testConnection() {
+    const { data, error } = await supabase.from('your_table').select('*').limit(1);
+    console.log(data, error);
+  }
+
+  return (
+    <div>
+      <h1>CAN Financial Solutions</h1>
+      <button onClick={testConnection}>Test Supabase</button>
+    </div>
+  );
+}
+
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
