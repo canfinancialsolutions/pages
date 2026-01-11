@@ -1,25 +1,7 @@
----
 
-### ✅ **pages/internal/dashboard.tsx** (with Supabase Auth)
-```tsx
-import { useEffect } from 'react';
-import { supabase } from '../../lib/supabaseClient';
+import { createClient } from '@supabase/supabase-js';
 
-export default function Dashboard() {
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!data.session) {
-        window.location.href = '/'; // Redirect to home if not authenticated
-      }
-    };
-    checkSession();
-  }, []);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
-  return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-blue-600 mb-4">Internal Dashboard</h1>
-      {/* Paste your existing dashboard code here */}
-    </div>
-  );
-}
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
