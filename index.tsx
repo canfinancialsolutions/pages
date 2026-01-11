@@ -1,4 +1,4 @@
-
+<img src="/logo.png" alt="CAN Financial Solutions" className="h-12 w-auto" />
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
